@@ -1,5 +1,5 @@
 
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, jsonify
 
 from game_utils.rock_paper_scissors import *
 
@@ -12,6 +12,16 @@ game_routes = Blueprint("game_routes", __name__)
 def index():
     print("VISITING THE START PAGE")
     return render_template("start.html")
+
+@game_routes.route("/hello")
+def hello():
+    print("VISITING THE HELLO PAGE")
+    return render_template("hello_page.html")
+
+@game_routes.route("/api")
+def api():
+    print("VISITING THE API PAGE")
+    return jsonify({"message": "HELLO"})
 
 #
 # GET /results
